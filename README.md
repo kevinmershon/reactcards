@@ -7,7 +7,7 @@ React Cards is inspired by Bruce Hauman's excellent [devcards](https://github.co
 ### Getting Started
 
 ```javascript
-npm install reactcards
+npm install @kevinmershon/reactcards
 ```
 
 Add an entry file (f.e. entry.js)
@@ -35,7 +35,7 @@ Add reactcards to your package.json
 }
 ```
 
-Available options for reactcards 
+Available options for reactcards
 
 ```
 -p, --port <number> Port to run React Card
@@ -43,7 +43,7 @@ Available options for reactcards
 -c, --conf <file> Custom Webpack config file
 ```
 
-Now you can simply run 
+Now you can simply run
 
 ```javascript
 npm run reactcards
@@ -64,7 +64,7 @@ npm run example
 
 The example includes 2 namespaces and features a number of markdown, tests and component cards.
 With react cards you can run the tests you have written for a card independent of react cards, run the following command.
- 
+
 ```javascript
 npm run example:test
 ```

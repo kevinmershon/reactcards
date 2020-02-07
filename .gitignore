@@ -4,3 +4,7 @@
 /coverage
 /examples/dist
 /dist
+*.log
+*.swp
+*.swo
+.tags

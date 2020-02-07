@@ -1,5 +1,6 @@
 var path = require('path')
 module.exports = {
+    mode: 'development',
     //devtool: 'source-map',
     context: path.join(__dirname, "src"),
     entry: [
@@ -7,6 +8,9 @@ module.exports = {
       'react-hot-loader/patch',
       './main'
     ],
+    resolve: {
+      extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    },
     output: {
         filename: "app.js",
         path: path.join(__dirname, "public")
@@ -16,7 +20,8 @@ module.exports = {
       "react-dom": "react-dom"
     },
     module: {
-        loaders: [
+        rules: [
+            { test: /\.tsx?$/, loader: "ts-loader", options: {transpileOnly: true}, exclude: /node_modules/},
             {
                 test: /\.js$/,
                 exclude: /node_modules/,

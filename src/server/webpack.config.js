@@ -3,8 +3,11 @@
 var path = require('path');
 var webpack = require('webpack');
 module.exports = {
-    //devtool: 'source-map',
+    mode: 'development',
     context: path.resolve(__dirname),
+    resolve: {
+      extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    },
     entry: [
         'webpack-hot-middleware/client?http://localhost:8080',
         'webpack/hot/only-dev-server',
@@ -16,16 +19,17 @@ module.exports = {
         publicPath: '/public'
     },
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
 
     module: {
-        loaders: [{
+        rules: [
+          { test: /\.tsx?$/, loader: "ts-loader", options: {transpileOnly: true}, exclude: /node_modules/},
+          {
             test: /\.jsx?$/,
             loader: 'babel-loader',
             query: {
-                presets: ['es2015', 'react', 'stage-2'],
+                presets: ['es2015', 'react', 'stage-2', 'typescript'],
                 plugins:[
                     "react-hot-loader/babel",
                     "babel-plugin-syntax-trailing-function-commas",

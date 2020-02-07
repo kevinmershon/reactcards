@@ -2,9 +2,13 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
+    mode: 'production',
     context: path.join(__dirname, "src"),
     entry: {
         client: './index'
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.jsx', '.js'],
     },
     output: {
         filename: "[name].bundle.js",
@@ -17,11 +21,12 @@ module.exports = {
         "react-dom": "react-dom"
     },
     module: {
-        loaders: [
+        rules: [
+            { test: /\.tsx?$/, loader: "ts-loader", options: {transpileOnly: true}, exclude: /node_modules/},
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loaders: ['babel?{presets:["es2015", "react", "stage-2"], plugins:["react-hot-loader/babel"]}']
+                loaders: ['babel-loader?{presets:["es2015", "react", "stage-2"], plugins:["react-hot-loader/babel"]}']
             },
             {
                 test: /\.css$/,

@@ -1,7 +1,10 @@
 import React from 'react'
 import { assert } from 'chai'
-import { shallow } from 'enzyme'
+import { configure, shallow } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-15'
 import { Foo, Bar } from '../components'
+
+configure({ adapter: new Adapter() })
 
 export function testBarAdvancedComponent() {
     describe('Test <Bar />', () => {
