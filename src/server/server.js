@@ -29,8 +29,8 @@ const createConfiguration = (config, entryFile, customWebpackConfig) => {
         return config
     }
 
-    // unset config loaders as project specific webpack config has been found.
-    config.module.loaders = [];
+    // unset config rules as project specific webpack config has been found.
+    config.module.rules = [];
 
     const customConfig = require(path.resolve(customWebpackConfig))
 
@@ -45,7 +45,7 @@ const createConfiguration = (config, entryFile, customWebpackConfig) => {
     return assign(customConfig, config, {
         plugins: [...config.plugins, ...plugins],
         module: assign(config.module, module, {
-            loaders: [...config.module.loaders, ...module.loaders || []],
+            rules: [...config.module.rules, ...module.rules || []],
         }),
     })
 }
