@@ -71,17 +71,20 @@ export default class TestCard extends Component {
     this.runTests(this.props.testModule)
   }
   runTests(testModule) {
+    const self = this
     const results = []
     const tests = Object.keys(testModule)
-    tests.forEach(name => {
-      try {
-        testModule[name]()
-        results.push([true, name])
-      } catch(e) {
-        results.push([e, name])
-      }
-    })
-    this.setState({results})
+    setTimeout(function() {
+      tests.forEach(name => {
+        try {
+          testModule[name]()
+          results.push([true, name])
+        } catch(e) {
+          results.push([e, name])
+        }
+      })
+      self.setState({results})
+    }, 0)
   }
   render() {
     const {title, doc} = this.props
