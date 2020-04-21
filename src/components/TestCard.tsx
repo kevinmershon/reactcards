@@ -73,11 +73,13 @@ export default class TestCard extends Component {
   runTests(testModule) {
     const self = this
     const results = []
-    const tests = Object.keys(testModule)
+    let windowTestContext = window.tests[this.props.title] || {}
+    let testObj = testModule || windowTestContext
+    let tests = Object.keys(testObj || windowTestContext)
     setTimeout(function() {
       tests.forEach(name => {
         try {
-          testModule[name]()
+          testObj[name]()
           results.push([true, name])
         } catch(e) {
           results.push([e, name])
